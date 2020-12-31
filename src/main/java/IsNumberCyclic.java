@@ -23,15 +23,18 @@ public class IsNumberCyclic {
         for (String s : multiplied) {
             System.out.println(s);
         }
-
+        int counter = 0;
         for (int j = 0; j < multiplied.get(0).length(); j++) {
             for (int k = 0; k < nr.length(); k++) {
                 if (multiplied.get(0).charAt(j) == nr.charAt(k)) {
-                    check = true;
+                    counter += 1;
                 }
             }
+            if (counter == nr.length()) {
+                return true;
+            }
         }
-        
+
         return check;
     }
 }
