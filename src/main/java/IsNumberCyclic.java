@@ -14,7 +14,7 @@ public class IsNumberCyclic {
         String numberToString = String.valueOf(number);
         List<String> multiplied = new ArrayList<>();
         boolean checkIfTrue = false;
-        /*Mnożymy do momentu aż długość wyniku nie będzie większa niż długość liczby*/
+
         for (int i = 1; i < 100; i++) {
             String temp = String.valueOf(number * i);
             if (temp.length() > numberToString.length()) {
@@ -22,35 +22,35 @@ public class IsNumberCyclic {
             }
             multiplied.add(temp);
         }
-        /*Tworzymy iterator i wyświetlamy listę*/
-        Iterator<String> iterator = multiplied.iterator();
-       /* while (iterator.hasNext())
-        {
-            System.out.println(iterator.next());
-        }*/
 
-        int isTrue = 0;
+        Iterator<String> iterator = multiplied.iterator();
+
+        int howManyTimes = 0;
         while (iterator.hasNext()) {
             String next = iterator.next();
-            int count = 0;
+            int countMutualDigits = 0;
             for (int i = 0; i < next.length(); i++) {
                 for (int j = 0; j < numberToString.length(); j++) {
                     if (next.charAt(i) == numberToString.charAt(j)) {
-                        count++;
+                        countMutualDigits++;
                     }
                 }
             }
-            if (count != numberToString.length()) {
+            if (countMutualDigits != numberToString.length()) {
                 break;
             }
-            System.out.println("count: " + count);
-            if (count == 6) {
-                isTrue++;
+            if (countMutualDigits == 6) {
+                howManyTimes++;
             }
-            if (isTrue >= 2) {
+            if (howManyTimes >= 2) {
                 checkIfTrue = true;
             }
         }
+        String msg = "";
+        if (howManyTimes == 1) {
+            msg = "raz";
+        } else msg = "razy";
+        System.out.println("liczba " + number + " jest " + howManyTimes + " " + msg + " cykliczna ");
         return checkIfTrue;
     }
 }
