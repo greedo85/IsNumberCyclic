@@ -10,10 +10,11 @@ public class IsCyclicTest {
 
         IsNumberCyclic isNumberCyclic = new IsNumberCyclic();
 
-        long number1 = 142857;
+        long number1 = 125874;
         long number2 = 142856;
         //then
         assertTrue(isNumberCyclic.isCyclic(number1));
+        System.out.println("drugi test");
         assertFalse(isNumberCyclic.isCyclic(number2));
 
     }
