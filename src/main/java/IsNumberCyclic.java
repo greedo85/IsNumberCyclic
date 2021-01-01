@@ -13,7 +13,7 @@ public class IsNumberCyclic {
     public static boolean isCyclic( long number ) {
         String numberToString = String.valueOf(number);
         List<String> multiplied = new ArrayList<>();
-        boolean checkIfTrue = false;
+        boolean checkIfCyclic = false;
 
         for (int i = 1; i < 100; i++) {
             String temp = String.valueOf(number * i);
@@ -24,7 +24,6 @@ public class IsNumberCyclic {
         }
 
         Iterator<String> iterator = multiplied.iterator();
-
         int howManyTimes = 0;
         while (iterator.hasNext()) {
             String next = iterator.next();
@@ -43,7 +42,7 @@ public class IsNumberCyclic {
                 howManyTimes++;
             }
             if (howManyTimes >= 2) {
-                checkIfTrue = true;
+                checkIfCyclic = true;
             }
         }
         String msg = "";
@@ -51,6 +50,6 @@ public class IsNumberCyclic {
             msg = "raz";
         } else msg = "razy";
         System.out.println("liczba " + number + " jest " + howManyTimes + " " + msg + " cykliczna ");
-        return checkIfTrue;
+        return checkIfCyclic;
     }
 }
